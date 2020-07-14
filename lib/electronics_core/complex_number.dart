@@ -1,12 +1,22 @@
 import 'dart:math';
 
-class ComplexNumber {
+import 'package:equatable/equatable.dart';
+
+class ComplexNumber extends Equatable {
   final double real;
   final double imaginary;
   double get i => real;
   double get j => imaginary;
+  double get value => sqrt(real ^ 2 + imaginary ^ 2);
+  double get magnitude => value;
+  double get angle => atan2(imaginary, real);
 
-  ComplexNumber({this.real = 0, this.imaginary = 0});
+  const ComplexNumber({this.real = 0, this.imaginary = 0});
+  factory ComplexNumber.real(double value) => ComplexNumber(real: value);
+
+  factory ComplexNumber.polar(double magnitude, double angle) => ComplexNumber(
+      real: magnitude * cos(pi * angle / 180),
+      imaginary: magnitude * sin(pi * angle / 180));
 
   ComplexNumber operator +(ComplexNumber complexNumber) {
     return ComplexNumber(
@@ -61,10 +71,21 @@ class ComplexNumber {
     return ComplexNumber(real: real, imaginary: imaginary);
   }
 
+  bool operator >(ComplexNumber complexNumber) {
+    return magnitude > complexNumber.magnitude;
+  }
+
+  bool operator <(ComplexNumber complexNumber) {
+    return magnitude < complexNumber.magnitude;
+  }
+
   @override
   String toString() {
     return '$i + i$j';
   }
+
+  @override
+  List<Object> get props => [real, imaginary];
 }
 
 extension on double {

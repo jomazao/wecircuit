@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:wecircuit/analysis_screen.dart';
+import 'package:wecircuit/circuit_test.dart';
 
 class BoardScreen extends StatelessWidget {
   static const routeName = '/';
@@ -22,7 +23,7 @@ class BoardScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         mouseCursor: MouseCursor.defer,
-        onPressed: () => null,
+        onPressed: () => CircuitTest().testSeries(),
       ),
     );
   }
