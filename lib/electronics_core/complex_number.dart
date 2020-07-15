@@ -24,6 +24,12 @@ class ComplexNumber extends Equatable {
         imaginary: this.imaginary + complexNumber.imaginary);
   }
 
+  ComplexNumber operator -(ComplexNumber complexNumber) {
+    return ComplexNumber(
+        real: this.real - complexNumber.real,
+        imaginary: this.imaginary - complexNumber.imaginary);
+  }
+
   ComplexNumber operator |(ComplexNumber complexNumber) {
     final double r1 = this.i;
     final double x1 = this.j;

@@ -3,6 +3,7 @@ import 'package:wecircuit/electronics_core/components/active_components/source.d
 import 'package:wecircuit/electronics_core/components/passive_components/resistor.dart';
 
 import 'electronics_core/circuits/circuit.dart';
+import 'electronics_core/math/fs.dart';
 
 class CircuitTest {
   Circuit circuit1;
@@ -49,5 +50,14 @@ class CircuitTest {
     print(res1.voltage);
     res1.voltage = ComplexNumber.real(20);
     print(res1.current);
+  }
+
+  void testSymbolic() {
+    Fs tfs1 = Fs(numerator: [1], denominator: [1, 1]);
+    Fs tfs2 = Fs(numerator: [1, 1], denominator: [1, 1]);
+
+    var gs = tfs1 * tfs2;
+
+    print(gs.toString());
   }
 }

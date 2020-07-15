@@ -23,7 +23,7 @@ class BoardScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         mouseCursor: MouseCursor.defer,
-        onPressed: () => CircuitTest().testSeries(),
+        onPressed: () => CircuitTest().testSymbolic(),
       ),
     );
   }

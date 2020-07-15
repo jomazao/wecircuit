@@ -11,7 +11,6 @@ class Circuit with Frequency {
     var componentList = <Component>[];
     nodes.forEach((node) => componentList.addAll(node.components));
     return componentList.toSet().toList();
-    //return componentList;
   }
 
   List<Node> nodes = [];
@@ -73,7 +72,7 @@ class Circuit with Frequency {
   }
 
   void resolveSeries() {
-    ComplexNumber current = Analysis().resolveCurrent(components);
+    ComplexNumber current = Analysis().resolveCurrent(this);
     components.forEach((component) =>
         component is PassiveComponent ? component.current = current : null);
   }

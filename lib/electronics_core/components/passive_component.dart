@@ -12,6 +12,8 @@ abstract class PassiveComponent extends Component
   double value;
   String units = '';
 
+  PassiveComponent(this.value);
+
   @override
   set current(ComplexNumber current) {
     super.current = current;
@@ -30,8 +32,6 @@ abstract class PassiveComponent extends Component
   ComplexNumber get power {
     return voltage * current;
   }
-
-  PassiveComponent(this.value);
 
   PassiveComponent.str(String value) {
     RegExp regExp = RegExp('^[0-9]+(\.[0-9]+)?[GMKmunp]\$');
